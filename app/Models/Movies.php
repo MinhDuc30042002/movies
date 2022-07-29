@@ -8,8 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class Movies extends Model
 {
+    protected $table = 'movies';
     use HasFactory;
+    public $timestamps = false;
 
+    protected $fillable = [
+        'name', 'link_img', 'status', 'director', 'national', 'released', 'timing', 'slug', 'description', 'id_category'
+    ];
     public function latest_movies()
     {
         $latest_movies = DB::table('movies')
@@ -61,6 +66,4 @@ class Movies extends Model
             ->paginate();
         return $searched_movies;
     }
-
-    
 }

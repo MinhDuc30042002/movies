@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RuleMovies;
+use App\Models\Genre;
 use App\Models\Movies;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class MoviesController extends Controller
 {
@@ -26,7 +29,8 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        //
+        $category = Genre::all();
+        return view('admin.movies.add', compact('category'));
     }
 
     /**
@@ -35,9 +39,13 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RuleMovies $request)
     {
-        //
+
+        $data = $request->validated();
+        Movies::create($data);
+
+        return redirect('/admin/phim/them')->with('message', 'Thêm thành công');
     }
 
     /**
@@ -82,6 +90,8 @@ class MoviesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $detroy_movie = Movies::findOrFail($id);
+        $detroy_movie->delete();
+        return back()->with('msg', 'Xóa thành công');
     }
 }

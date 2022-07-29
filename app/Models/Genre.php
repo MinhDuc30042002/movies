@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class Genre extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
     protected $table = 'categories';
     public $timestamps = false;
     protected $fillable = ['category', 'slug'];

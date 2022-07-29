@@ -18,9 +18,9 @@ class MoviesController extends Controller
     public function get_movie_by_slug($slug)
     {
         $movie = new Movies();
-
-        $movie = $movie->get_movie_by_slug($slug);
+        
         $related_to = $movie->latest_movies();
+        $movie = $movie->get_movie_by_slug($slug);
         $cate = Genre::all();
         return view('client.single', compact('slug', 'movie', 'cate', 'related_to'));
     }
