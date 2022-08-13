@@ -82,7 +82,7 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(RuleMovies $request, $slug)
     {
         $data = $request->except('_token');
         $update_movie = Movies::where('slug', '=', $slug)->update($data);

@@ -39,7 +39,6 @@ class GenreController extends Controller
     public function store(RuleGenre $request)
     {
         $data = $request->validated();
-
         Genre::create($data);
         return redirect('/admin/the-loai/them')->with('message', 'Thêm thành công');
     }
@@ -77,7 +76,7 @@ class GenreController extends Controller
     public function update(RuleGenre $request, $slug)
     {
         $data = $request->validated();
-        $update_category = Genre::where('slug', '=', $slug)->update(
+        Genre::where('slug', '=', $slug)->update(
             [
                 'category' => $data['category'],
                 'slug' => $data['slug']
