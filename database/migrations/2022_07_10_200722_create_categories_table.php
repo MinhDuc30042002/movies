@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('category', 50);
             $table->string('slug', 100);
+            $table->softDeletes();
         });
     }
 

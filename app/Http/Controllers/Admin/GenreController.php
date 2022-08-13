@@ -105,12 +105,21 @@ class GenreController extends Controller
         }
     }
 
-    public function restore($id)
+    public function restore()
     {
-        $onlySoftDeleted = Genre::onlyTrashed()
-            ->findOrFail($id);
+        $onlySoftDeleted = Genre::onlyTrashed()->get();
+        return view('admin.genre.restore', compact('onlySoftDeleted'));
+    }
 
-        $onlySoftDeleted->restore();
-        return redirect()->route('admin.the-loai');
+    public function store_record($id)
+    {
+        Genre::withTrashed()->where('id', $id)->restore();
+        return redirect('admin/the-loai');
+    }
+
+    public function force_delete($id)
+    {
+        Genre::withTrashed()->where('id', $id)->force_delete();
+        return redirect('admin/the-loai/restore');
     }
 }
