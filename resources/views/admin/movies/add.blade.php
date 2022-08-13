@@ -34,60 +34,6 @@
                 <div class="md:grid md:gap-4">
                     <div class="mt-5 md:mt-0 md:col-span-2">
                         <form action="/admin/phim/them" method="POST">
-                            {{-- @error('name')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('released')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('link_img')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('status')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('director')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('national')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('timing')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('description')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror
-                            @error('slug')
-                                <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                                    role="alert">
-                                    <span class="font-medium">{{ $message }}</span>
-                                </div>
-                            @enderror --}}
                             <div class="shadow overflow-hidden sm:rounded-md">
                                 <div class="px-4 py-5 bg-white sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
@@ -150,7 +96,7 @@
                                                 <span class="font-medium text-red-700 p-1">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="col-span-6 sm:col-span-3">
+                                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                             <label for="national" class="block text-sm font-medium text-gray-700">Quốc
                                                 gia</label>
                                             <input type="text" name="national" id="national"
@@ -160,7 +106,17 @@
                                                 <span class="font-medium text-red-700 p-1">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="col-span-6 sm:col-span-3">
+                                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                            <label for="status" class="block text-sm font-medium text-gray-700">Trạng thái
+                                                </label>
+                                            <input type="text" name="status" id="status"
+                                                autocomplete="address-level2"
+                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                            @error('status')
+                                                <span class="font-medium text-red-700 p-1">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                             <label for="link_img" class="block text-sm font-medium text-gray-700">Hình
                                                 ảnh</label>
                                             <input type="file" name="link_img" id="link_img"

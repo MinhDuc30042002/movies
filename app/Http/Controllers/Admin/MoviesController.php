@@ -54,9 +54,10 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         //
+        $a = $request->validate();
     }
 
     /**
@@ -65,9 +66,13 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $movie = Movies::where('slug', '=', $slug)->firstOrFail();
+        $category = Genre::all();
+
+        $category_of_movie = Genre::where('id', '=' , $movie['id_category'])->firstOrFail();
+        return view('admin.movies.edit', compact('movie', 'category', 'category_of_movie'));
     }
 
     /**
@@ -77,9 +82,11 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $data = $request->except('_token');
+        $update_movie = Movies::where('slug', '=', $slug)->update($data);
+        return redirect('/admin/phim/sua/' . $data['slug'])->with('message', 'Cập nhật thành công');
     }
 
     /**

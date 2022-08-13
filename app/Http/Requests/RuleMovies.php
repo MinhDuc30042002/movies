@@ -31,7 +31,8 @@ class RuleMovies extends FormRequest
             'released' => 'integer: 4',
             'timing' => 'required',
             'slug' => 'required | unique:movies|max:255',
-            'id_category' => 'integer'
+            'id_category' => 'integer',
+            'status' => 'required'
         ];
 
         return $rules;
@@ -48,7 +49,8 @@ class RuleMovies extends FormRequest
             'link_img.required' => 'Chưa có file hình ảnh',
             'timing.required' => 'Phim chưa có thời gian',
             'director.required' => 'Vui lòng nhập đạo diễn' ,
-            'national.required' => 'Vui lòng nhập quốc gia'
+            'national.required' => 'Vui lòng nhập quốc gia',
+            'status.required' => 'Vui lòng nhập trạng thái phim'
         ];
     }
 
@@ -61,7 +63,8 @@ class RuleMovies extends FormRequest
             'link_img' => 'Địa chỉ hình ảnh',
             'national' => 'Quốc gia',
             'timing' => 'Thời gian',
-            'director' => 'Đạo diễn'
+            'director' => 'Đạo diễn',
+            'status' => 'Trạng thái'
         ];
     }
 }

@@ -51,6 +51,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::post('/sua/{slug}', [AdminGenreController::class, 'update']);
 
         Route::get('/xoa/{id}', [AdminGenreController::class, 'destroy']);
+
+
+        Route::get('restore/{id}', [AdminGenreController::class, 'store_record']);
+        Route::get('restore/destroy/{id}', [AdminGenreController::class, 'force_delete']);
     });
 
     // Group Movies
@@ -60,7 +64,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/them', [AdminMoviesController::class, 'create']);
         Route::post('/them', [AdminMoviesController::class, 'store']);
 
-        Route::get('/xoa/{id}',[AdminMoviesController::class, 'destroy']);
+        Route::get('/xoa/{id}', [AdminMoviesController::class, 'destroy']);
+
+        Route::get('/sua/{slug}', [AdminMoviesController::class, 'edit']);
+        Route::post('/sua/{slug}', [AdminMoviesController::class, 'update']);
     });
 });
 
